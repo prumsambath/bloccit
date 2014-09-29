@@ -15,6 +15,7 @@ gem 'bootstrap-sass', '~>3.1.1'
 gem 'devise'
 gem 'faker'
 gem 'figaro'
+gem 'pundit'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
