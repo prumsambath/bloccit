@@ -9,37 +9,8 @@
 <body>
 
 <div class="container">
-  <ul class="nav nav-tabs">
-    <li><%= link_to "Bloccit", root_path %></li>
-    <li><%= link_to "About", about_path %></li>
-  </ul>
-
-  <div class="pull-right user-info">
-    <% if current_user %>
-      Hello <%= link_to (current_user.name || current_user.email), edit_user_registration_path %>! <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign In", new_user_session_path %>
-      <%= link_to "Sign Up", new_user_registration_path %>
-    <% end %>
-  </div>
-
-  <% if flash[:notice] %>
-    <div class="alert alert-success">
-      <button class="close" type="button" data-dismiss="alert">&times;</button>
-      <%= flash[:notice] %>
-    </div>
-  <% elsif flash[:error] %>
-    <div class="alert alert-danger">
-      <button class="close" type="button" data-dismiss="alert">&times;</button>
-      <%= flash[:error] %>
-    </div>
-  <% elsif flash[:alert] %>
-    <div class="alert alert-warning">
-      <button class="close" type="button" data-dismiss="alert">&times;</button>
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
-
+  <%= render 'layouts/header' %> 
+  <%= render 'layouts/notification' %> 
   <%= yield %>
 </div>
 
