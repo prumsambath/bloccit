@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post = current_user.posts.build(params.require(:post).permit(:title, :body))
+    @post = current_user.posts.build(post_params)
     @post.topic = @topic
     authorize @post
     if @post.save
@@ -48,6 +48,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image)
   end
 end
