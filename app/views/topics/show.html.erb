@@ -23,6 +23,7 @@
         </div>
       </div>
     <% end %>
+    <%= paginate @posts %>
   </div>
   <div class="col-md-4">
     <% if policy(Post.new).create? %>
