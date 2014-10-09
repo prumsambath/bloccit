@@ -19,7 +19,7 @@ users = User.all
 end
 topics = Topic.all
 
-50.times do
+150.times do
   Post.create!(
     user:  users.sample,
     topic: topics.sample,
