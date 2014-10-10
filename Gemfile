@@ -20,7 +20,7 @@ gem 'redcarpet'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
-gem 'will_paginate', '~> 3.0.5'
+gem 'kaminari'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
