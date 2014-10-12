@@ -9,6 +9,11 @@
       <%= @post.user.name %>
     </small>
     <p><%= @post.markdown_body %></p>
+    <h4>Comments</h4>
+    <% @comments.each do |comment| %>
+      <p><%= comment.body %></p>
+    <% end %>
+    <%= render partial: 'shared/comment_form', locals: { topic: @topic, post: @post } %>
   </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>
