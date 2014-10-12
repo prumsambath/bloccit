@@ -1,7 +1,10 @@
 <%= form_for [topic, post, post.comments.new] do |f| %>
   <div class="form-group">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-1">
+        <%= image_tag(current_user.avatar.small.url) if current_user.avatar? %>
+      </div>
+      <div class="col-md-8">
         <%= f.text_field :body, class: 'form-control', placeholder: 'Enter comment' %>
       </div>
       <div class="col-md-3">

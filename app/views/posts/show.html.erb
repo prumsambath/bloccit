@@ -11,7 +11,11 @@
     <p><%= @post.markdown_body %></p>
     <h4>Comments</h4>
     <% @comments.each do |comment| %>
-      <p><%= comment.body %></p>
+      <p>
+        <%= image_tag(comment.user.avatar.tiny.url) if comment.user.avatar? %>
+        <em><b><%= comment.user.name %>:</b></em>
+        <%= comment.body %>
+      </p>
     <% end %> 
     <% if current_user.present? %>
       <%= render partial: 'shared/comment_form', locals: { topic: @topic, post: @post } %>

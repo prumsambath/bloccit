@@ -4,9 +4,10 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     post = Post.find(params[:post_id])
     @comment.post_id = post.id
-    if @comment.save
-      redirect_to [post.topic, post]
+    if !@comment.save
+      flash[:error] = "Error saving comment. Please try again."
     end
+    redirect_to [post.topic, post]
   end
 
   private
