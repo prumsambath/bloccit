@@ -63,8 +63,8 @@ member = User.new(
   email:    'member@example.com',
   password: 'helloworld',
 )
-admin.skip_confirmation!
-admin.save!
+member.skip_confirmation!
+member.save!
 
 puts "Seed finished"
 puts "#{User.count} users created"
