@@ -8,6 +8,16 @@ class User < ActiveRecord::Base
   has_many :comments
   mount_uploader :avatar, AvatarUploader
 
+  def admin?
+    role?(:admin)
+  end
+
+  def moderator?
+    role?(:moderator)
+  end
+
+  private
+
   def role?(base_role)
     role == base_role.to_s
   end
