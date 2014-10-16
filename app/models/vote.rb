@@ -1,5 +1,6 @@
 class Vote < ActiveRecord::Base
   after_save :update_post
+
   belongs_to :user
   belongs_to :post
 
