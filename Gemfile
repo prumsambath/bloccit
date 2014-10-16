@@ -9,6 +9,8 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'interactive_editor'
+  gem 'awesome_print'
 end
 
 group :test do

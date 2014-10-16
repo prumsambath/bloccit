@@ -1,11 +1,19 @@
-<h1><%= @post.markdown_title %></h1>
-<%= image_tag(@post.image.url) if @post.image? %>
-
 <div class="row">
   <div class="col-md-8">
+    <%= render partial: 'votes/voter', locals: { post: @post} %>
+    <h1><%= @post.markdown_title %></h1>
+    <%= image_tag(@post.image.url) if @post.image? %>
     <%= render partial: 'posts/post_status', locals: { post: @post } %>
 
     <p><%= @post.markdown_body %></p>
+
+    <div>
+      <h3><%= pluralize(@post.points, 'point') %></h3>
+      <small>
+        <%= pluralize(@post.up_votes, 'up vote') %>
+        <%= pluralize(@post.down_votes, 'down vote') %>
+      </small>
+    </div
 
     <%= render @post.comments %>
 
@@ -22,3 +30,5 @@
     <% end %>
   </div>
 </div>
+
+>
