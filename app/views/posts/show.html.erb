@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-8">
-    <%= render partial: 'votes/voter', locals: { post: @post} %>
+    <%= render partial: 'votes/voter', locals: { post: @post } %>
     <h1><%= @post.markdown_title %></h1>
     <%= image_tag(@post.image.url) if @post.image? %>
     <%= render partial: 'posts/post_status', locals: { post: @post } %>
@@ -13,7 +13,8 @@
         <%= pluralize(@post.up_votes, 'up vote') %>
         <%= pluralize(@post.down_votes, 'down vote') %>
       </small>
-    </div
+    </div>
+    <%= render partial: 'favorites/favorite', locals: { post: @post } %>
 
     <%= render @post.comments %>
 
@@ -26,9 +27,8 @@
       <%= link_to "Edit", edit_topic_post_path(@topic, @post), class: "btn btn-success" %>
     <% end %>
     <% if policy(@post).destroy? %>
-      <%= link_to "Delete", [@topic, @post], class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete the post?'}%>
+      <%= link_to "Delete", [@topic, @post], class: "btn btn-danger", method: :delete,
+                  data: { confirm: 'Are you sure you want to delete the post?' } %>
     <% end %>
   </div>
 </div>
-
->
