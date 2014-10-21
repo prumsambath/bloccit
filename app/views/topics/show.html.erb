@@ -11,20 +11,7 @@
   <div class="col-md-8">
     <p class="lead"><%= @topic.description %></p>
 
-    <% @posts.each do |post| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= render partial: 'votes/voter', locals: { post: post} %>
-            <%= link_to post.markdown_title, [@topic, post] %>
-            <%= image_tag(post.image.url) if post.image? %>
-          </h4>
-
-          <%= render partial: 'posts/post_status', locals: { post: post } %>
-          <%= post.comments.count %> Comments
-        </div>
-      </div>
-    <% end %>
+    <%= render @posts %>
 
     <%= paginate @posts %>
   </div>

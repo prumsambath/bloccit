@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
   default_scope -> { order('rank DESC') }
+  scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
 
   def markdown_title
     render_as_markdown title
