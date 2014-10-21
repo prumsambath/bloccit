@@ -28,6 +28,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'kaminari'
+gem 'newrelic_rpm'
 
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
