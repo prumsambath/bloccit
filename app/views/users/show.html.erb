@@ -1,3 +1,14 @@
+<% if @user.avatar? %>
+  <%= image_tag @user.avatar.url, class: 'pull-left' %>
+<% end %>
+<div class="media-body">
+  <h2 class="media-heading"><%= @user.name %></h2>
+  <small>
+    <%= pluralize(@user.posts.count, 'post') %>
+    <div class="js-comments-count"><%= pluralize(@user.comments.count, 'comment') %></div>
+  </small>
+</div>
+
 <div class="row">
   <div class="tabbable tabs-left">
     <ul class="nav nav-tabs">
@@ -13,18 +24,5 @@
         <%= render @comments %>
       </div>
     </div>
-
-      <% if @user.avatar? %>
-        <%= image_tag @user.avatar.url, class: 'pull-left' %>
-      <% end %>
-      <div class="media-body">
-        <h2 class="media-heading"><%= @user.name %></h2>
-        <small>
-          <%= pluralize(@user.posts.count, 'post') %>
-          <div class="js-comments-count"><%= pluralize(@user.comments.count, 'comment') %></div>
-        </small>
-      </div>
-    </div>
   </div>
 </div>
-
