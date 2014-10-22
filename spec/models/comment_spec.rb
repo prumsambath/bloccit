@@ -1,18 +1,16 @@
 require 'rails_helper'
 
 describe Comment do
-  include TestFactories
-
   describe 'after_create' do
     before do
-      @post = associated_post
-      @user = authenticated_user
-      @comment = Comment.new(body: 'My comment', post: @post, user_id: 10000)
+      @post = create(:post)
+      @user = create(:user)
+      @comment = build(:comment, post: @post, user: @user)
     end
 
     context "with user's permission" do
       it 'sends an email to users who have favorited the post' do
-        @user.favorites.where(post: @post).create
+        @user.favorites.create(post: @post)
 
         allow(FavoriteMailer)
           .to receive(:new_comment)
@@ -34,7 +32,7 @@ describe Comment do
       before { @user.update_attribute(:email_favorites, false) }
 
       it "does not send email, even to users who have favorited" do
-        @user.favorites.where(post: @post).create
+        @user.favorites.create(post: @post)
 
         expect(FavoriteMailer)
           .not_to receive(:new_comment)
