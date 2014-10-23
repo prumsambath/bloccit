@@ -20,6 +20,8 @@ group :test do
   gem 'factory_girl_rails', '~> 4.0'
 end
 
+gem 'did_you_mean', group: [:development, :test]
+
 gem 'bootstrap-sass', '~>3.1.1'
 gem 'devise'
 gem 'faker'
