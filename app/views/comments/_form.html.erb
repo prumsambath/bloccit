@@ -1,7 +1,17 @@
-<%= form_for [@post, @post.comments.new], remote: true do |f| %>
+<%= form_for [post, comment], remote: true do |f| %>
   <div class="form-group">
     <div class="row">
       <div class="col-md-9">
+      <% if comment.errors.any? %>
+        <div class="alert alert-danger">
+          <h4>There are <%= pluralize(comment.errors.count, 'error') %>.</h4>
+          <ul>
+            <% comment.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
         <%= image_tag(current_user.avatar.small.url) if current_user.avatar? %>
         <%= f.text_field :body, class: 'form-control', placeholder: 'Enter comment' %>
       </div>
